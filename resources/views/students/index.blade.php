@@ -26,6 +26,13 @@
         </div>
     </nav>
 
+    <!-- Notifikasi Popup -->
+    @if(session('success'))
+        <div id="notification" class="fixed top-0 right-0 mt-4 mr-4 bg-green-500 text-white p-4 rounded-md shadow-md">
+            {{ session('success') }}
+        </div>
+    @endif
+
     <div class="container mx-auto p-8">
         <button type="button" class="bg-blue-500 text-white px-4 py-2 rounded-md mb-4" data-bs-toggle="modal" data-bs-target="#addModal">
             Tambah Data
@@ -67,5 +74,6 @@
     @include('edit_modal')
 
     @vite('resources/js/modal.js')
+    @vite('resources/js/notification.js')
 </body>
 </html>

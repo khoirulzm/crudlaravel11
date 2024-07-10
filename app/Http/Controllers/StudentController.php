@@ -22,7 +22,7 @@ class StudentController extends Controller
                           ->orWhere('school', 'like', '%' . $search . '%')
                           ->orWhere('description', 'like', '%' . $search . '%');
                 });
-            })->paginate(10);
+            })->paginate(12);
 
         return view('students.index', compact('students'))->with('username', Auth::user()->name);
     }
@@ -39,7 +39,7 @@ class StudentController extends Controller
 
         Student::create($request->all());
 
-        return redirect()->route('students.index')->with('success', 'Student added successfully.');
+        return redirect()->route('students.index')->with('success', 'Data berhasil ditambahkan.');
     }
 
     // Update the specified student in storage
@@ -54,7 +54,7 @@ class StudentController extends Controller
 
         $student->update($request->all());
 
-        return redirect()->route('students.index')->with('success', 'Student updated successfully.');
+        return redirect()->route('students.index')->with('success', 'Data berhasil diedit.');
     }
 
     // Remove the specified student from storage
@@ -62,6 +62,6 @@ class StudentController extends Controller
     {
         $student->delete();
 
-        return redirect()->route('students.index')->with('success', 'Student deleted successfully.');
+        return redirect()->route('students.index')->with('success', 'Data berhasil dihapus.');
     }
 }
